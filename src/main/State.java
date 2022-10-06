@@ -2,7 +2,7 @@ public class State {
     private final int pos_X;
     private final int pos_Y;
     private final int height;
-    private final float time;  // Time to reach from the initial State
+    private float time;  // Time to reach from the initial State
 
     public State(int pos_X, int pos_Y, float time, int height) {
         this.pos_X = pos_X;
@@ -26,6 +26,10 @@ public class State {
 
     public float getTime() {
         return time;
+    }
+
+    public void setTime(float time) {
+        this.time = time;
     }
 
     /* Operations */
