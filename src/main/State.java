@@ -33,7 +33,7 @@ public class State {
         if( this.pos_Y-1 < 0 ||map[this.pos_X][this.pos_Y-1]==-1)return null;
         int diferencia = map[this.pos_X][this.pos_Y+1]-this.height;
         float time=0;
-        if(diferencia>=0) time+=diferencia;
+        if(diferencia>=0) time+=1+diferencia;
         else time+=0.5;
         return new State(this.pos_X, this.pos_Y-1,time,map[this.pos_X][this.pos_Y-1]);
     }
@@ -42,7 +42,7 @@ public class State {
         if(this.pos_Y+1>=map[0].length || map[this.pos_X][this.pos_Y+1]==-1) return null;
         int diferencia = map[this.pos_X][this.pos_Y+1]-this.height;
         float time=0;
-        if(diferencia>=0) time+=diferencia;
+        if(diferencia>=0) time+=1+diferencia;
         else time+=0.5;
         return new State(this.pos_X, this.pos_Y+1,time,map[this.pos_X][this.pos_Y+1]);
     }
@@ -51,7 +51,7 @@ public class State {
         if(this.pos_X-1<0 || map[this.pos_X-1][this.pos_Y]==-1) return null;
         int diferencia = map[this.pos_X-1][this.pos_Y]-this.height;
         float time=0;
-        if(diferencia>=0) time+=diferencia;
+        if(diferencia>=0) time+=1+diferencia;
         else time+=0.5;
         return new State(this.pos_X, this.pos_Y+1,time,map[this.pos_X-1][this.pos_Y]);
     }
@@ -60,8 +60,10 @@ public class State {
         if(this.pos_X+1>=map.length || map[this.pos_X+1][this.pos_Y]==-1) return null;
         int diferencia = map[this.pos_X+1][this.pos_Y]-this.height;
         float time=0;
-        if(diferencia>=0) time+=diferencia;
+        if(diferencia>=0) time+=1+diferencia;
         else time+=0.5;
         return new State(this.pos_X, this.pos_Y+1,time,map[this.pos_X+1][this.pos_Y]);
     }
+
+
 }
