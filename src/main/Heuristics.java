@@ -12,6 +12,7 @@ public class Heuristics {
         if(this.num==2) return h2(s1,sFinal,map);
         return h3(s1,sFinal,map);
     }
+
     private float h1(State s1, State sFinal,int[][]map){
         return 0;
     }

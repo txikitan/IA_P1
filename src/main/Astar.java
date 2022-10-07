@@ -5,21 +5,9 @@ import java.util.PriorityQueue;
 
 public class Astar {
 
-    static class NoDuplicatesPriorityQueue<Node> extends PriorityQueue<Node> {
-        public NoDuplicatesPriorityQueue(Comparator<? super Node> comparator) {
-            super(comparator);
-        }
-        public boolean add(Node e) {
-            boolean isAdded = false;
-            if (!super.contains(e)) {
-                isAdded = super.add(e);
-            }
-            return isAdded;
-        }
-    }
-
     public static Solution AStarSearch(int[][] map, int xIni,int yIni, int xEnd,int yEnd, int hNum) throws IOException {
-        NoDuplicatesPriorityQueue<Node> pending = new NoDuplicatesPriorityQueue<>(new StateComparator());
+
+        PriorityQueue<Node> pending = new PriorityQueue<>(new StateComparator());
         ArrayList<Node> handled = new ArrayList<>();
         boolean found = false;
         pending.add(new Node(new State(xIni,yIni,0,map[xIni][yIni]),"",0));
@@ -33,7 +21,7 @@ public class Astar {
             if(actualNode.getState().equals(finalState)){
                 found=true;
                 sol = new Solution(actualNode.getPath(), nodeCount,
-                        (nodeCount)<(map.length*map[0].length));
+                        actualNode.getState().getTime());
             }
             else {
                 ArrayList <State> successors = new ArrayList<>();

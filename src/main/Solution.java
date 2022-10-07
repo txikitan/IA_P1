@@ -1,12 +1,12 @@
 public class Solution {
     private final String path;
     private final int numNodes;
-    private final boolean correct;
+    private final float time;
 
-    public Solution(String path, int numNodes, boolean correct) {
+    public Solution(String path, int numNodes, float time) {
         this.path = path;
         this.numNodes = numNodes;
-        this.correct = correct;
+        this.time = time;
     }
 
     public String getPath() {
@@ -17,7 +17,7 @@ public class Solution {
         return numNodes;
     }
 
-    public boolean isCorrect() {
-        return correct;
+    public float getTime() {
+        return time;
     }
 }

@@ -39,7 +39,7 @@ public class State {
         float time=0;
         if(diferencia>=0) time+=1+diferencia;
         else time+=0.5;
-        return new State(this.pos_X, this.pos_Y-1,time,map[this.pos_X][this.pos_Y-1]);
+        return new State(this.pos_X, this.pos_Y-1,this.time+time,map[this.pos_X][this.pos_Y-1]);
     }
 
     public State down(int[][] map){
@@ -48,7 +48,7 @@ public class State {
         float time=0;
         if(diferencia>=0) time+=1+diferencia;
         else time+=0.5;
-        return new State(this.pos_X, this.pos_Y+1,time,map[this.pos_X][this.pos_Y+1]);
+        return new State(this.pos_X, this.pos_Y+1,this.time+time,map[this.pos_X][this.pos_Y+1]);
     }
 
     public State left(int[][] map){
@@ -57,7 +57,7 @@ public class State {
         float time=0;
         if(diferencia>=0) time+=1+diferencia;
         else time+=0.5;
-        return new State(this.pos_X, this.pos_Y+1,time,map[this.pos_X-1][this.pos_Y]);
+        return new State(this.pos_X, this.pos_Y+1,this.time+time,map[this.pos_X-1][this.pos_Y]);
     }
 
     public State right(int[][] map){
@@ -66,7 +66,7 @@ public class State {
         float time=0;
         if(diferencia>=0) time+=1+diferencia;
         else time+=0.5;
-        return new State(this.pos_X, this.pos_Y+1,time,map[this.pos_X+1][this.pos_Y]);
+        return new State(this.pos_X, this.pos_Y+1,this.time+time,map[this.pos_X+1][this.pos_Y]);
     }
 
     public boolean equals(State s2){
