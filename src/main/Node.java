@@ -17,5 +17,9 @@ public class Node {
     public float getHeuristicVal() {
         return heuristicVal;
     }
+    public boolean equals(Node n2){
+        return this.state.equals(n2.getState()) && this.path.equalsIgnoreCase(n2.getPath())
+                && this.heuristicVal == n2.getHeuristicVal();
+    }
 
 }

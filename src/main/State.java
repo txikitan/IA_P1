@@ -69,5 +69,10 @@ public class State {
         return new State(this.pos_X, this.pos_Y+1,time,map[this.pos_X+1][this.pos_Y]);
     }
 
+    public boolean equals(State s2){
+        if(s2==null)return false;
+        return this.pos_X == s2.getPos_X() && this.pos_Y == s2.getPos_Y() && this.height == s2.getHeight() && this.time == s2.getTime();
+    }
+
 
 }
