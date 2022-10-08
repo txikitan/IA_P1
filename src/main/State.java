@@ -1,3 +1,8 @@
+/**------------------------------------------
+| IA Exercise 1. Informed Search
+| State and operators class
+| Gabriel Garcia Rodriguez
+|-------------------------------------------*/
 public class State {
     private final int pos_X;
     private final int pos_Y;
@@ -34,8 +39,8 @@ public class State {
 
     /* Operations */
     public State up(int[][] map){
-        if( this.pos_Y-1 < 0 ||map[this.pos_X][this.pos_Y-1]==-1)return null;
-        int diferencia = map[this.pos_X][this.pos_Y+1]-this.height;
+        if( this.pos_Y-1 < 0 ||map[this.pos_X][this.pos_Y-1]==-1)return null; // check if we are moving outside the map
+        int diferencia = map[this.pos_X][this.pos_Y+1]-this.height; // compute height difference
         float time=0;
         if(diferencia>=0) time+=1+diferencia;
         else time+=0.5;
@@ -69,6 +74,14 @@ public class State {
         return new State(this.pos_X, this.pos_Y+1,this.time+time,map[this.pos_X+1][this.pos_Y]);
     }
 
+
+    // To check if a state is equal except for the time (pending list management)
+    public boolean partialEquals(State s2){
+        if(s2==null)return false;
+        return this.pos_X == s2.getPos_X() && this.pos_Y == s2.getPos_Y() && this.height == s2.getHeight();
+    }
+
+    // checks if two states are fully equal
     public boolean equals(State s2){
         if(s2==null)return false;
         return this.pos_X == s2.getPos_X() && this.pos_Y == s2.getPos_Y() && this.height == s2.getHeight() && this.time == s2.getTime();
