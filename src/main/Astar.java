@@ -12,6 +12,15 @@ import java.util.Queue;
 
 public class Astar {
 
+    private static boolean checkDuplicates (Queue<Node> list,Node n) {
+        for(Node i : list) {
+            if (i.getState().partialEquals(n.getState())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static Solution AStarSearch(int[][] map, int xIni,int yIni, int xEnd,int yEnd, int hNum) throws IOException {
         // Declare the pending sorted queue(accepts duplicates) and the handled list
         Queue<Node> pending = new PriorityQueue<>(new StateComparator());
@@ -51,7 +60,9 @@ public class Astar {
                     Heuristics hX = new Heuristics(hNum);
                     float heuristicVal = hX.Apply(i,finalState,map);
                     Node newNode = new Node(i,newPath,heuristicVal+i.getTime()); // a star needs the time to be added to the heuristic value
-                    pending.add(newNode); // add it to the pending list (a star accepts duplicates)
+                    if(!checkDuplicates(handled,newNode)) {
+                        pending.add(newNode); // add it to the pending list (a star accepts  in pending list only)
+                    }
                 }
                 handled.add(actualNode); // the actual node is now handled
             }

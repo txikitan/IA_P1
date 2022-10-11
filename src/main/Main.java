@@ -34,6 +34,7 @@ public class Main {
                     i++;
             }
             // call the best first search algorithm
+            //Solution sol = Astar.AStarSearch(map,xIni,yIni,xEnd,yEnd,1);
             Solution sol = BestFirst.BestFirsSearch(map,xIni,yIni,xEnd,yEnd,1);
             System.out.println("Finished!");
         }
