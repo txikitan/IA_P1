@@ -35,6 +35,7 @@ public class Main {
             }
             // call the best first search algorithm
             Solution sol = BestFirst.BestFirsSearch(map,xIni,yIni,xEnd,yEnd,1);
+            System.out.println("Finished!");
         }
         catch (IOException e) {
             System.out.println("File Read Error");

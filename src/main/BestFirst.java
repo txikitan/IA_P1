@@ -33,7 +33,7 @@ public class BestFirst {
             nodeCount++;
             Node actualNode = pending.peek();// Get first node of the sorted queue
             pending.remove(); // Remove first node of the sorted queue
-            if(actualNode.getState().equals(finalState)){ // if it's equal to the final state we're done
+            if(actualNode.getState().partialEquals(finalState)){ // if it's equal to the final state we're done
                 found=true;
                 sol = new Solution(actualNode.getPath(), nodeCount,
                         actualNode.getState().getTime()); // path, number of nodes counted and time are the sol
@@ -59,7 +59,7 @@ public class BestFirst {
                     float heuristicVal = hX.Apply(i,finalState,map);
                     Node newNode = new Node(i,newPath,heuristicVal);
                     // Check for duplicates before adding (bestFirst does NOT accept duplicates)
-                    if(checkDuplicates(pending, newNode) && checkDuplicates(handled, newNode)){
+                    if(!checkDuplicates(pending, newNode) && !checkDuplicates(handled, newNode)){
                         pending.add(newNode); // add it to the pending list
                     }
                 }

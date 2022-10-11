@@ -19,9 +19,15 @@ public class Heuristics {
         return h3(s1,sFinal,map);
     }
 
+    // Euclidean distance
     private float h1(State s1, State sFinal,int[][]map){
-        return 0;
+        float x1 = s1.getPos_X();
+        float x2 = sFinal.getPos_X();
+        float y1 = s1.getPos_Y();
+        float y2 = sFinal.getPos_Y();
+        return (float)(Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1)));
     }
+
     private float h2(State s1, State sFinal,int[][]map){
         return 0;
     }

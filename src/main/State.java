@@ -38,16 +38,16 @@ public class State {
     }
 
     /* Operations */
-    public State up(int[][] map){
+    public State left(int[][] map){
         if( this.pos_Y-1 < 0 ||map[this.pos_X][this.pos_Y-1]==-1)return null; // check if we are moving outside the map
-        int diferencia = map[this.pos_X][this.pos_Y+1]-this.height; // compute height difference
+        int diferencia = map[this.pos_X][this.pos_Y-1]-this.height; // compute height difference
         float time=0;
         if(diferencia>=0) time+=1+diferencia;
         else time+=0.5;
         return new State(this.pos_X, this.pos_Y-1,this.time+time,map[this.pos_X][this.pos_Y-1]);
     }
 
-    public State down(int[][] map){
+    public State right(int[][] map){
         if(this.pos_Y+1>=map[0].length || map[this.pos_X][this.pos_Y+1]==-1) return null;
         int diferencia = map[this.pos_X][this.pos_Y+1]-this.height;
         float time=0;
@@ -56,22 +56,22 @@ public class State {
         return new State(this.pos_X, this.pos_Y+1,this.time+time,map[this.pos_X][this.pos_Y+1]);
     }
 
-    public State left(int[][] map){
+    public State up(int[][] map){
         if(this.pos_X-1<0 || map[this.pos_X-1][this.pos_Y]==-1) return null;
         int diferencia = map[this.pos_X-1][this.pos_Y]-this.height;
         float time=0;
         if(diferencia>=0) time+=1+diferencia;
         else time+=0.5;
-        return new State(this.pos_X, this.pos_Y+1,this.time+time,map[this.pos_X-1][this.pos_Y]);
+        return new State(this.pos_X-1, this.pos_Y,this.time+time,map[this.pos_X-1][this.pos_Y]);
     }
 
-    public State right(int[][] map){
+    public State down(int[][] map){
         if(this.pos_X+1>=map.length || map[this.pos_X+1][this.pos_Y]==-1) return null;
         int diferencia = map[this.pos_X+1][this.pos_Y]-this.height;
         float time=0;
         if(diferencia>=0) time+=1+diferencia;
         else time+=0.5;
-        return new State(this.pos_X, this.pos_Y+1,this.time+time,map[this.pos_X+1][this.pos_Y]);
+        return new State(this.pos_X+1, this.pos_Y,this.time+time,map[this.pos_X+1][this.pos_Y]);
     }
 
 

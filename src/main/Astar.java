@@ -26,7 +26,7 @@ public class Astar {
             nodeCount++;
             Node actualNode = pending.peek(); // Get first node of the sorted queue
             pending.remove(); // Remove first node of the sorted queue
-            if(actualNode.getState().equals(finalState)){ // if it's equal to the final state we're done
+            if(actualNode.getState().partialEquals(finalState)){ // if it's equal to the final state we're done
                 found=true;
                 sol = new Solution(actualNode.getPath(), nodeCount,
                         actualNode.getState().getTime()); // path, number of nodes counted and time are the sol
