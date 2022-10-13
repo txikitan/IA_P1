@@ -1,3 +1,5 @@
+import java.util.Queue;
+
 /**-------------------------------------------
 | IA Exercise 1. Informed Search
 | Node class, each node will represent a slot
@@ -16,6 +18,15 @@ public class Node {
         this.heuristicVal = heuristicVal;
     }
 
+    /*Method that checks partially if a list of nodes has a node with same position and height */
+    public static boolean checkDuplicates (Queue<Node> list, Node n) {
+        for(Node i : list) {
+            if (i.getState().partialEquals(n.getState())) {
+                return true;
+            }
+        }
+        return false;
+    }
     // getters
     public State getState() {
         return state;

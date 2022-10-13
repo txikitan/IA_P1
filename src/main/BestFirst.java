@@ -8,16 +8,6 @@ import java.util.*;
 
 public class BestFirst {
 
-    /*Method that checks partially if a list has a node with same position and height */
-    private static boolean checkDuplicates (Queue<Node> list,Node n) {
-        for(Node i : list) {
-            if (i.getState().partialEquals(n.getState())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     // The main search method
     public static Solution BestFirsSearch(int[][] map, int xIni,int yIni, int xEnd,int yEnd, int hNum) throws IOException {
         // Declare the pending sorted queue(accepts duplicates) and the handled list
@@ -56,10 +46,10 @@ public class BestFirst {
                     else if(i.equals(upState))newPath+="up,";
                     else if(i.equals(downState))newPath+="down,";
                     Heuristics hX = new Heuristics(hNum);
-                    float heuristicVal = hX.Apply(i,finalState,map);
+                    float heuristicVal = hX.Apply(i,finalState);
                     Node newNode = new Node(i,newPath,heuristicVal);
-                    // Check for duplicates before adding (bestFirst does NOT accept duplicates)
-                    if(!checkDuplicates(pending, newNode) && !checkDuplicates(handled, newNode)){
+                    // Check for duplicates before adding (bestFirst does NOT accept duplicates even if they are not handled yet)
+                    if(!Node.checkDuplicates(pending, newNode) && !Node.checkDuplicates(handled, newNode)){
                         pending.add(newNode); // add it to the pending list
                     }
                 }

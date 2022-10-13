@@ -13,14 +13,14 @@ public class Heuristics {
         else this.num=num;
     }
     // Method to apply the corresponding num heuristic
-    public float Apply(State s1, State sFinal,int[][]map){
-        if(this.num==1) return h1(s1,sFinal,map);
-        if(this.num==2) return h2(s1,sFinal,map);
-        return h3(s1,sFinal,map);
+    public float Apply(State s1, State sFinal){
+        if(this.num==1) return h1(s1,sFinal);
+        if(this.num==2) return h2(s1,sFinal);
+        return h3(s1,sFinal);
     }
 
-    // Euclidean distance
-    private float h1(State s1, State sFinal,int[][]map){
+    // Classic euclidean distance
+    private float h1(State s1, State sFinal){
         float x1 = s1.getPos_X();
         float x2 = sFinal.getPos_X();
         float y1 = s1.getPos_Y();
@@ -28,10 +28,16 @@ public class Heuristics {
         return (float)(Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1)));
     }
 
-    private float h2(State s1, State sFinal,int[][]map){
-        return 0;
+    // Maximum distance difference in one axis
+    private float h2(State s1, State sFinal){
+        float x1 = s1.getPos_X();
+        float x2 = sFinal.getPos_X();
+        float y1 = s1.getPos_Y();
+        float y2 = sFinal.getPos_Y();
+        return Math.max(Math.abs(x1-x2),Math.abs(y1-y2));
     }
-    private float h3(State s1, State sFinal,int[][]map){
+
+    private float h3(State s1, State sFinal){
         return 0;
     }
 }
