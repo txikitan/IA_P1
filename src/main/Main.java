@@ -11,12 +11,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         boolean fi = false;
-        // Read input config file, first line will be dimension,
-        // second line will be xini and yini
-        // third line will be xfin and yfin
-        // fourth+ lines correspond to the map by itself
-
         while (!fi) {
+            // Read input config file, first line will be dimension,
+            // second line will be xini and yini
+            // third line will be xfin and yfin
+            // fourth+ lines correspond to the map by itself
             Scanner sc = new Scanner(System.in);
             System.out.println("Mapa 1 o 2?");
             int nMap = sc.nextInt();
@@ -51,7 +50,7 @@ public class Main {
                     System.out.println("Error, introdueix de nou:");
                     nAlgorithm = sc.nextInt();
                 }
-                System.out.println("Heuristica 1, 2 or 3?");
+                System.out.println("Heuristica 1, 2 o 3?");
                 int nHeur = sc.nextInt();
                 while (nHeur != 1 && nHeur != 2 && nHeur != 3) {
                     System.out.println("Error, introdueix de nou:");
@@ -63,7 +62,7 @@ public class Main {
                     System.out.println("BFS:\n Cami: " + sol.getPath() + "\n Num. Nodes: " + sol.getNumNodes() + "\n Temps: " + sol.getTime() +
                             "\n Heuristica: "+nHeur+"\n Mapa: "+nMap);
                 }
-                if (nAlgorithm == 2) {
+                else {
                     sol = Astar.AStarSearch(map, xIni, yIni, xEnd, yEnd, nHeur);
                     System.out.println("A*:\n Cami: " + sol.getPath() + "\n Num. Nodes: " + sol.getNumNodes() + "\n Temps: " + sol.getTime() +
                             "\n Heuristica: "+nHeur+"\n Mapa: "+nMap);

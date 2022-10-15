@@ -1,11 +1,10 @@
-import java.util.Queue;
-
 /**-------------------------------------------
 | IA Exercise 1. Informed Search
 | Node class, each node will represent a slot
 | of the pending queue in the search algorithms
 | Gabriel Garcia Rodriguez
 |--------------------------------------------*/
+import java.util.Queue;
 public class Node {
     private final State state;
     private final String path; // path to reach current state since initial state
